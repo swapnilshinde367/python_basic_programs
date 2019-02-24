@@ -1,0 +1,521 @@
+##########character_input.py##########name = str( input( 'Please enter your name ' ) )
+age = input( 'Please enter your age ' )
+if( False == age.isdigit() ) :
+	print( 'You didn\'t enter number' )
+	print( 'Your name is ' + name )
+else :
+	print( 'Hi ' + name + ' you are still young and ' + age )##########check_email_addresses_from_file.py##########import re
+with open( 'email_addresses.txt', 'r' ) as email_addresses :
+	line = email_addresses.readline()
+	while line :
+		email_address = line.strip( '\n' )
+		lstMatches = re.findall( "[a-zA-Z0-9-_]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+", email_address )
+		if 0 != len(lstMatches) :
+			print( lstMatches[0] )
+		line = email_addresses.readline()##########check_primality.py##########import sys
+number = input( 'Please enter number : ' )
+
+if( False == number.isdigit() ):
+	print( 'not a number' )
+	sys.exit()
+else :
+		number = int(number)
+		for i in range( 2, (number//2) + 1 ) :
+			if( 0 == number% i ) :
+				print( f'{number} is not prime' )
+				sys.exit()
+		print( f'{number} is prime' )
+
+		#################################################### Print till n number #############################################################
+		lstPrimes = []
+		for i in range( 2, number + 1) :
+			isPrime = 1
+			for j in range( 2, (i//2)+1) :
+				if( 0 == i % j ) :
+					isPrime = 0
+					break
+			if( 1 == isPrime ) :
+				lstPrimes.append( i )
+		print(lstPrimes)
+
+		#################################################### Print first n number of primes #############################################################
+
+		lstPrimes = []
+		i = 0
+		rangedNumber = 2
+		while( i < number ) :
+			for j in range( 2, rangedNumber + 1 ) :
+				isPrime = 1
+				for k in range( 2, (rangedNumber // 2) + 1 ) :
+					if( 0 == j % k ) :
+						isPrime = 0
+						break
+			if( 1 == isPrime ) :
+				lstPrimes.append( j )
+				i = i + 1
+			rangedNumber = rangedNumber + 1
+		print( lstPrimes )
+
+
+##########check_tic_tac_toe.py##########lstGame = [[1, 2, 2],
+	[2, 2, 0],
+	[2, 1, 1]]
+
+pl1 = 0
+pl2 = 0
+pln = 0
+
+for i in range(len(lstGame)) :
+	for j in range(len(lstGame)) :
+
+		if( 0 == i and 0 == j ) :
+			if( 1 == lstGame[i][j] ) :
+				pl1 = 1
+				pl2 = 0
+				pln = 0
+			elif( 2 == lstGame[i][j] ) :
+				pl1 = 0
+				pl2 = 1
+				pln = 0
+			else :
+				pl1 = 0
+				pl2 = 0
+				pln = 1
+		else :
+			if( 1 == lstGame[i][j] and lstGame[i][j] == lstGame[i][j-1] and 1 == pl1 ) :
+				pl1 = 1
+				pl2 = 0
+				pln = 0
+			elif( 2 == lstGame[i][j] and lstGame[i][j] == lstGame[i][j-1] and 1 == pl2) :
+				pl1 = 0
+				pl2 = 1
+				pln = 0
+			else :
+				pl1 = 0
+				pl2 = 0
+				pln = 1
+
+		print ( lstGame[i][j],lstGame[i][j-1] )
+	# print( '' )
+
+	# print( '' )
+
+# print( pl1, pl2, pln )##########cows_and_bulls.py##########import sys
+import random
+
+def cowsnbulls() :
+	number = random.randint( 1000, 9999 )
+
+	while(1) :
+		userinput = input( 'Guess the number or press "q" to quit : ' )
+		if 'q' == userinput :
+			sys.exit()
+		elif False == userinput.isdigit() or 4 != len( userinput ):
+			print( 'Not a valid number, exiting' )
+			sys.exit()
+		else :
+			cows = 0
+			bulls = 0
+			number = str(number)
+			for i in range( len( userinput ) ):
+				if( userinput[i] == number[i] ) :
+					cows = cows + 1
+				else :
+					bulls = bulls + 1
+			print( f'cows = {cows} and bulls = {bulls}' )
+			if( 4 == cows ) :
+				print( 'You got the 4 cows, number is correct' )
+				sys.exit()
+
+if __name__ == '__main__' :
+	cowsnbulls()##########decode.py####################decode_web_page.py##########import requests
+import bs4
+
+strLink = 'https://www.nytimes.com'
+
+response = requests.get( strLink )
+html = response.text
+
+soup = bs4.BeautifulSoup( html, 'html.parser' )
+
+strContent = soup.find( id="site-content")
+
+for div in strContent.find('div') :
+	if None != div:
+		print(div.get_text())##########divisors.py##########intnumber = int( input( 'Enter number ' ) )
+
+for i in range( 1, ( intnumber//2 ) + 1 ) :
+	if( 0 == intnumber % i ) :
+		print( i )##########draw_a_game_board.py##########plot_range = int( input( 'Enter range : ' ) )
+verticle = '|   '
+horizontal = ' ---'
+
+for i in range( plot_range ) :
+	print( horizontal * plot_range )
+	print( verticle * ( plot_range + 1 ) )
+print( horizontal * plot_range )##########element_search.py##########lstNumbers = [1, 2, 3, 4, 5, 6, 7, 9, 12, 19, 23, 24, 43, 45, 54, 78, 87, 98, 123, 234, 457, 654, 723, 856, 942, 967, 998]
+inputnumber = int( input( 'Enter number : ' ) )
+
+while( 1 ) :
+	start = 0
+	middle = len( lstNumbers ) // 2
+	end = len( lstNumbers )
+
+	if( 2 == len( lstNumbers ) ) :
+		if( inputnumber in lstNumbers ) :
+			print( 'Found it' )
+		else :
+			print( 'Nope not there' )
+		# found = 1
+		break
+	if inputnumber > lstNumbers[middle] :
+		lstNumbers = lstNumbers[middle:end]
+		# print(lstNumbers)
+	else :
+		lstNumbers = lstNumbers[start:middle]
+		# print(lstNumbers)
+##########fibonacci.py##########number = input( 'Enter number : ' )
+if False == number.isdigit() :
+	print( 'not a number' )
+else :
+	number = int( number )
+	################### Print first n fibonacci numbers ##############################
+	lstFibbo = []
+	a = 1
+	b = 1
+	for i in range(number) :
+		lstFibbo.append(a)
+		a , b = b, a + b
+	print(lstFibbo)
+	################### Print all fibonacci numbers less than n ##############################
+	lstFibbo = []
+	a = 1
+	b = 1
+	while a < number :
+		lstFibbo.append(a)
+		a,b = b, a+b
+	print( lstFibbo )##########file_overlap.py##########with open( 'primenumbers.txt', 'r' ) as prime_numbers_file :
+	prime_numbers = (prime_numbers_file.readlines())
+
+with open ( 'happynumbers.txt', 'r' ) as happy_numbers_file :
+	happy_numbers = happy_numbers_file.readlines()
+
+for i in prime_numbers :
+	for j in happy_numbers :
+		if( i == j ) :
+			print( i.strip( '\n' ) )##########guessing_game_1.py##########import sys
+import random
+
+tries = 0
+secret_number = random.randint( 1, 9 )
+
+while( 1 ) :
+	user_input = input( 'Guess the number or press "q" to quit : ' )
+	if( 'q' == user_input ) :
+		print( f' Total tries : {tries} and correct number is {secret_number}')
+		sys.exit()
+	else :
+		tries = tries + 1
+		user_input = int( user_input )
+		if( user_input == secret_number ) :
+			print( 'There you are!' )
+			print( f' Total tries : {tries}')
+			sys.exit()
+		elif( user_input < secret_number ) :
+			print( 'Too low!' )
+		else :
+			print( 'To high!' )##########guessing_game_2.py##########import sys
+import random
+
+print( 'Keep number in your head between 1 to 100, I will guess the nuber' )
+
+guess_attempts = 1
+
+start = 1
+end = 100
+middle = end // 2
+
+while( 1 ) :
+
+	middle = (start+end) // 2
+
+	print( f'{start}, {middle}, {end}' )
+
+	print( f'number is {middle}' )
+
+	userinput = int( input( 'Press "1" for high, "2" for low, 3 for correct answer and 4 to quit : ' ) )
+	if( 4 == userinput or 3 == userinput ) :
+		print( f'Guesses = {guess_attempts}')
+		sys.exit()
+	elif( 1 == userinput ) :
+		guess_attempts = guess_attempts + 1
+		end = middle
+	else :
+		guess_attempts = guess_attempts + 1
+		start = middle##########list_all_files_n_contents.py##########import os
+
+objFile = open( 'new_file.txt', 'w' )
+
+for file_name in os.listdir('./') :
+	if file_name.endswith( '.py' ) :
+		objFile.write( '#'*10 )
+		objFile.write( file_name )
+		objFile.write( '#'*10 )
+		with open( file_name, 'r' ) as file_to_read :
+			line = file_to_read.readline()
+			while line :
+				objFile.write( line )
+				line = file_to_read.readline()
+
+
+objFile.close()##########list_comprehensions.py##########a = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+
+# Print even numbers
+print( [i for i in a if 0 == i % 2] )##########list_less_than_ten.py##########lstintNumbers = [1,2,5,765,763,3456,7,5632,123,87654,4565,4]
+print( [ i for i in lstintNumbers if i > 10 ] )##########list_overlap.py##########from random import randint
+
+lstintRandom1 = range( 0, randint( 1, 100 ) )
+lstintRandom2 = range( 0, randint( 1, 100 ) )
+
+print( lstintRandom1 )
+print( lstintRandom2 )
+
+print( [ i for i in lstintRandom1 if i in lstintRandom2 ] )##########list_overlap_comprehensions.py##########import random
+
+listA = random.sample( range( 100 ), 15 )
+listB = random.sample (range( 100 ), 20 )
+
+print(listA)
+print(listB)
+
+print( [ i for i in set(listA) if i in set(listB)] )##########list_remove_duplicates.py##########lstNumbers = [1,2,3,4,5,6,7,9,9,987,4,234,5,3456,2,1,234,6,2,112,34,56,2,2345,2,345,6,2,334,43,123,4,45,3]
+
+print(len((lstNumbers)))
+print((list(set(lstNumbers))))
+
+lstNew = []
+for i in lstNumbers :
+	if( i not in lstNew ):
+		lstNew.append(i)
+
+print(lstNew)##########odd_or_even.py##########number = input( 'Gimmie number ' )
+if False == number.isdigit() :
+	print( 'You didn\'t give integer, bye!' )
+else :
+	number = int( number )
+	if 0 == number % 2:
+		print( 'It is even' )
+	else :
+		print( 'It is odd' )##########password_generator.py##########import random
+import string
+
+password = ''
+password = password + ''.join( random.sample( string.ascii_lowercase, 5) )
+password = password + ''.join( random.sample( string.ascii_uppercase, 5 ) )
+password = password + ''.join( random.sample( string.digits, 6 ) )
+password = password + ''.join( random.sample( string.punctuation, 4 ) )
+
+password = list( password )
+random.shuffle( password )
+
+print( ''.join( password ) )##########read_from_file.py##########names = {}
+with open( 'names.txt', 'r' ) as open_file :
+	line = open_file.readline()
+	while line :
+		line = line.strip( '\n' )
+		if line not in names :
+			# names.append( line )
+			names[line] = 1
+		else :
+			names[line] = names[line] + 1
+		# print(line)
+		line = open_file.readline()
+print(names)##########read_from_json.py##########import json
+from datetime import datetime
+import matplotlib.pyplot as plt
+
+months = {}
+
+with open( 'json_file.json' ) as json_file :
+	line = json_file.read()
+	line = json.loads( line )
+	for i in line :
+		jsondate = line[i].split('/')
+		datem = datetime( int(jsondate[2]), int(jsondate[0]), int(jsondate[1]) ).strftime('%b')
+		if( datem not in months ) :
+			months[datem] = 1
+		else :
+			months[datem] = months[datem] + 1
+
+plt.bar( months.keys(), months.values() )
+plt.show()##########regex.py##########import re
+
+strLine = "The rain in Spain"
+
+# findall - prints all matches, returns "None" otherwise
+lstMatches = re.findall( "ai", strLine )
+print( lstMatches )
+
+lstMatches = re.findall( "[\a-z]", strLine )
+print( lstMatches )
+
+# search - it searches for the match and if there are more than one match first one is returned returns "None" otherwise
+
+lstMatches = re.search( 'rain', strLine )
+
+print( lstMatches.start() )
+
+# split - returns the list, where the string splits at match
+lstMatches = re.split( 'ain', strLine )
+print( lstMatches )
+
+# sub - replaces every match with given string
+lstMatches = re.sub( "\s", "9", strLine )
+print( lstMatches )##########reverse_word_order.py##########strName = 'My name is Michael'
+
+strName = ' ' .join(strName.split()[ : : -1])
+print( strName )##########rock_scissor_paper.py##########quit_game = False
+while False == quit_game :
+	user_input = input( 'Enter "q" to quit the game or press enter to continue game ' )
+	if "q" == user_input :
+		print( 'Bye!' )
+		quit_game = True
+	else :
+		player_1 = int( input( 'Player 1, enter your weapon no. \n 1. Rock \n 2. Scissor \n 3. Paper : ' ) )
+		player_2 = int( input ( 'Player 2, enter your weapon no. \n 1. Rock \n 2. Scissor \n 3. Paper : ' ) )
+
+		if( player_1 == player_2 ) :
+			print( 'Tied!!' )
+		elif( 1 == player_1 ) :
+			print( player_1)
+			print( player_2)
+			if( 2 == player_2 ) :
+				print( 'Winner: Player 1' )
+			else :
+				print( 'Winner: Player 2' )
+		elif( 2 == player_1 ) :
+			if( 3 == player_2 ) :
+				print( 'Winner: Player 1' )
+			else :
+				print( 'Winner: Player 2' )
+		elif( 3 == player_1 ) :
+			if( 1 == player_2 ) :
+				print( 'Winner: Player 1' )
+			else :
+				print( 'Winner: Player 2' )##########string_functions.py########### Capitalize first letter of string
+strLine = 'this is text'
+print( strLine.capitalize() )
+
+# title - Convert first character of the word to upper in given string
+print( strLine.title )
+
+# Upper - cinvert to uppercase
+print( strLine.upper() )
+
+# Lower - convert to lowercase
+print( strLine.lower() )
+
+# Casefold - convert to lowercase - simmilaar to lower
+print( strLine.casefold() )
+
+# Swapcase - Swap the case of string
+strLine = 'ThIs Is TeXt'
+print( strLine.swapcase() )
+
+# Count - Count the string occurances in given string
+strLine ='I love apples, apple are my favorite fruit'
+print( strLine.count( 'apple' ) )
+print( strLine.count( 'e' ) )
+
+#Startswith - returns true if it starts with given letter - This is case sensitive
+print( strLine.startswith( 'i' ) )
+print( strLine.startswith( 'I' ) )
+
+#Endswith - returns true if it string ends with given character - Case sensitive function
+print( strLine.endswith('t') )
+print( strLine.endswith('T') )
+
+# Find - finds the given string in string and returns position of first occurance else -1
+print( strLine.find( 'apple' ) )
+
+# Index - Returns the location of the searched string, in given string else raises exception
+print( strLine.index( 'apple' ) )
+
+#isalpha - Checks if the string has all letters
+strLine = 'Test'
+print( strLine.isalpha() )
+
+# isalnum - check if the string is alphanumeric
+strLine = 'Test123'
+print( strLine.isalnum() )
+
+# isdigit - Checks if string has all digits
+strLine = '12345'
+print( strLine.isdigit() )
+
+# isdecimal - Checks if all characters are decimals
+strLine = '12345'
+print( strLine.isdecimal() )
+
+# isnumeric - Checks if all characters are numeric
+strLine = '1234567'
+print( strLine.isnumeric() )
+
+# islower - Checks if all character are lower
+strLine = 'test'
+print( strLine.islower() )
+
+# isupper - Checks if all characters are upper
+strLine = 'TEST'
+print( strLine.isupper() )
+
+# join - joins the list items by a seperator
+lstNames = ['one', 'two', 'three', 'four']
+print( ' & '.join( lstNames ) )
+
+# split - Split the string by seperator and converts it to list
+strLine = '&'.join( lstNames )
+print( strLine.split( '&' ) )
+
+# replace - replace the substrings by given string
+strLine ='I love apples, apples are my favorite fruit'
+strLine = strLine.replace( 'apples', 'mangoes' )
+print( strLine )
+
+# lstrip - strip spaces/characters from left of the string
+strLine ='        Banana             Apple'
+print( strLine.lstrip() )
+
+# rstrip - strip spaces/characters from right of the string
+strLine ='Apple        Banana             '
+print( strLine.rstrip() )
+
+# rfind - find last occurance of substring in a given string
+strLine ='I love apples, apples are my favorite fruit'
+print( strLine.rfind( 'apple' ) )
+
+# rsplit - will start splitting from right and max is the number how many parts to be split into, if not given it works as split()
+strLine ='I love apples, apples are my favorite fruit'
+print( strLine.rsplit( ' ', 2 ) )
+
+# splitline - Split the string where new line is given
+strLine = "Thank you for the music\nWelcome to the jungle"
+print(strLine.splitlines())
+
+
+# zfill - insert the zeros at begining of the string till it reaches the length
+strLine = 'Zero'
+print( strLine.zfill( 10 ) )##########write_to_file.py##########with open( 'writetofile.txt', 'w' ) as open_file:
+	for i in range(10) :
+		open_file.write( str(i) )##########write_to_json.py##########import json
+
+birthdays = {
+		'Albert Einstein': '03/14/1879',
+		'Benjamin Franklin': '01/17/1706',
+		'Ada Lovelace': '12/10/1815',
+		'Donald Trump': '06/14/1946',
+		'Rowan Atkinson': '01/6/1955'}
+
+with open( 'json_file.json', 'a' ) as json_file :
+	json_file.writelines( json.dumps( birthdays ) )

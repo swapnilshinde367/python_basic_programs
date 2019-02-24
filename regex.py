@@ -22,3 +22,7 @@ print( lstMatches )
 # sub - replaces every match with given string
 lstMatches = re.sub( "\s", "9", strLine )
 print( lstMatches )
+
+ip = "7.0.0.1"
+strMatches = re.findall( "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", ip )
+print(strMatches)

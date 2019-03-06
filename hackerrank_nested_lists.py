@@ -20,4 +20,5 @@ if __name__ == '__main__':
 			lstNames.sort()
 			for strName in lstNames :
 				print( strName )
+			break
 		intCount = intCount + 1

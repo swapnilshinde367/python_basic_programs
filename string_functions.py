@@ -11,7 +11,7 @@ print( strLine.upper() )
 # Lower - convert to lowercase
 print( strLine.lower() )
 
-# Casefold - convert to lowercase - simmilaar to lower
+# Casefold - convert to lowercase - simmilar to lower
 print( strLine.casefold() )
 
 # Swapcase - Swap the case of string
@@ -90,7 +90,8 @@ print( strLine.rstrip() )
 strLine ='I love apples, apples are my favorite fruit'
 print( strLine.rfind( 'apple' ) )
 
-# rsplit - will start splitting from right and max is the number how many parts to be split into, if not given it works as split()
+# rsplit - will start splitting from right and max is the number how many parts to b
+# e split into, if not given it works as split()
 strLine ='I love apples, apples are my favorite fruit'
 print( strLine.rsplit( ' ', 2 ) )
 

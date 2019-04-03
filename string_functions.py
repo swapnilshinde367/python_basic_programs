@@ -5,7 +5,7 @@ print( strLine.capitalize() )
 # title - Convert first character of the word to upper in given string
 print( strLine.title )
 
-# Upper - cinvert to uppercase
+# Upper - convert to uppercase
 print( strLine.upper() )
 
 # Lower - convert to lowercase

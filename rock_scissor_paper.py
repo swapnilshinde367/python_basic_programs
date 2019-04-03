@@ -11,8 +11,6 @@ while False == quit_game :
 		if( player_1 == player_2 ) :
 			print( 'Tied!!' )
 		elif( 1 == player_1 ) :
-			print( player_1)
-			print( player_2)
 			if( 2 == player_2 ) :
 				print( 'Winner: Player 1' )
 			else :

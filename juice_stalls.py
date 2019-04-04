@@ -1,13 +1,22 @@
 import sys
+
 numOfStalls = 4
 distOfStalls =  [5,7,8,10]
-initialEnergy = 17
 juiceQuantity = [2,5,2,6]
+distance = 15
+initialEnergy = 17
+
+numOfStalls = int(raw_input())
+distOfStalls =  map( int, (raw_input()).split() )
+juiceQuantity = map( int, (raw_input()).split() )
+distance = int(raw_input())
+initialEnergy = int(raw_input())
+
+
 # initialEnergy = 5
 # juiceQuantity = [2,3,1,5]
-distance = 15
+
 stallsVisited = 0
-distCoverd = 0
 disttocover = 0
 currentEnergy = initialEnergy
 

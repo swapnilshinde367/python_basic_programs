@@ -3,7 +3,7 @@ strLine = 'this is text'
 print( strLine.capitalize() )
 
 # title - Convert first character of the word to upper in given string
-print( strLine.title )
+print( strLine.title() )
 
 # Upper - convert to uppercase
 print( strLine.upper() )
@@ -103,3 +103,8 @@ print(strLine.splitlines())
 # zfill - insert the zeros at begining of the string till it reaches the length
 strLine = 'Zero'
 print( strLine.zfill( 10 ) )
+
+# pad with characters
+strLine = 'One'
+print(strLine.ljust(5,'1'))
+print(strLine.rjust(5,'1'))

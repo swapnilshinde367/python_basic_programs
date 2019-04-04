@@ -1,4 +1,5 @@
-start, rows, columns = map(int, input().split(','))
+numbers = map( int, (raw_input()).split() )
+start, rows, columns = numbers[0], numbers[1], numbers[2]
 
 x = []
 for i in range(0,rows) :

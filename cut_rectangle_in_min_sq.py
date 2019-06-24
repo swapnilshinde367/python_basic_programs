@@ -14,4 +14,5 @@ def handleCalculateSquares( height, width ) :
 			width, height = height % width, width
 
 handleCalculateSquares( 30, 36 )
+print('-'*10)
 handleCalculateSquares( 13, 29 )

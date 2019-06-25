@@ -34,6 +34,7 @@ class CPerson() :
 
 	def intro(self) :
 		print('My name is ' + self.name)
+
 	@classmethod
 	def update_salary( cls, salary ) :
 		cls.salary = salary
@@ -108,3 +109,29 @@ if 26 == len(alphas):
 	print(True)
 else :
 	print(False)
+
+
+import re
+
+strPass = 'abcDFE123@#$'
+
+if 5 < len(strPass) :
+	print( re.findall( '([a-z])([A-Z])([0-9])', strPass ) )
+
+
+lstPrimes = []
+i = 0
+number = 10
+rangednum = 2
+while i < number :
+	for j in range(2,rangednum+1) :
+		isPrime = 1
+		for k in range(2,j//2) :
+			if j%k == 0 :
+				isPrime = 0
+				break
+	if isPrime == 1 :
+		lstPrimes.append(j)
+		i = i + 1
+	rangednum = rangednum + 1
+print(lstPrimes)

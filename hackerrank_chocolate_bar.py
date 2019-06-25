@@ -13,7 +13,6 @@ def birthday(s, d, m):
 
 	return intTotalWays
 
-
 if __name__ == '__main__':
 	n = int(input().strip())
 	s = list(map(int, input().rstrip().split()))

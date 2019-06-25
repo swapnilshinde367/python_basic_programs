@@ -185,3 +185,9 @@ if 0 < len(lstMatches) :
 	print('Valid')
 else :
 	print('Invalid')
+
+##### Date time
+from datetime import datetime, timedelta
+
+strDate = datetime.today() + timedelta(days=2)
+print(datetime.strftime(strDate, "%d-%m-%Y" ))

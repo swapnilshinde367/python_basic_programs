@@ -11,3 +11,5 @@ password = list( password )
 random.shuffle( password )
 
 print( ''.join( password ) )
+
+print(string.digits)
